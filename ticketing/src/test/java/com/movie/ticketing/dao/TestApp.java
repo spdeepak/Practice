@@ -18,7 +18,7 @@ import com.movie.ticketing.model.Movie;
 import com.movie.ticketing.model.Type;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath*:/applicationContext.xml" })
+@ContextConfiguration(locations = { "classpath*:applicationContext.xml" })
 public class TestApp {
 
     @Resource

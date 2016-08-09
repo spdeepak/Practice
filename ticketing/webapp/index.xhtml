@@ -14,31 +14,7 @@
 
 <h:body styleClass="body">
 
-	<ui:include src="/resources/templates/header.xhtml" />
-
-	<h:panelGroup rendered="#{textMiningController.showResult}"
-		layout="block" id="resultPanel">
-		<rich:tabPanel switchType="client" styleClass="textAnalysisC"
-			headerAlignment="" title="Text Analysis in Detail">
-			<rich:tab name="Number Count" styleClass="nctabC" id="nctab">
-				<div id="numberOfTableDiv">
-					<p:chart type="bar" responsive="true"
-						model="#{textMiningController.barModel}" />
-				</div>
-			</rich:tab>
-
-			<rich:tab id="swctab" styleClass="swctabC"
-				title="List of similar words with the number of times repeated"
-				name="Similar Word Count">
-				<ui:include src="wordCount.xhtml" />
-			</rich:tab>
-
-			<rich:tab id="postab" title="Parts of Speech of all the letters"
-				styleClass="postabCls" name="POS">
-				<ui:include src="posTables.xhtml" />
-			</rich:tab>
-		</rich:tabPanel>
-	</h:panelGroup>
+	<div class="menu"></div>
 
 </h:body>
 </html>
