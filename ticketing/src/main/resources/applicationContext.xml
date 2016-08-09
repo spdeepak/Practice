@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="com.movie.ticketing" />
+
+	<import resource="hibernateContext.xml" />
+
+	<bean id="baseDAO" class="com.movie.ticketing.dao.BaseDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="movieDAO" class="com.movie.ticketing.dao.MovieDAO"
+		parent="baseDAO" />
+
+	<bean id="castDAO" class="com.movie.ticketing.dao.CastDAO"
+		parent="baseDAO" />
+		
+	<bean id="cinemaHallDAO" class="com.movie.ticketing.dao.CinemaHallDAO"
+		parent="baseDAO" />
+
+	<bean id="controller" class="com.movie.ticketing.controller.BaseController">
+		<property name="movieDAO" ref="movieDAO" />
+	</bean>
+
+</beans>
