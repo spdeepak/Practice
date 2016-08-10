@@ -16,5 +16,15 @@
 
 	<div class="menu"></div>
 
+	<div class="mianbody">
+		<p:dataTable id="movie_table" styleClass="movie_table"
+			value="#{controller.movieList()}" var="p">
+			<p:column>
+				<h:outputText value="#{p.movieName}" />
+			</p:column>
+		</p:dataTable>
+	</div>
+
+
 </h:body>
 </html>

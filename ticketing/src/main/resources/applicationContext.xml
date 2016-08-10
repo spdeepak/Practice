@@ -17,14 +17,9 @@
 	<bean id="movieDAO" class="com.movie.ticketing.dao.MovieDAO"
 		parent="baseDAO" />
 
-	<bean id="castDAO" class="com.movie.ticketing.dao.CastDAO"
-		parent="baseDAO" />
-		
+	<bean id="castDAO" class="com.movie.ticketing.dao.CastDAO" parent="baseDAO" />
+
 	<bean id="cinemaHallDAO" class="com.movie.ticketing.dao.CinemaHallDAO"
 		parent="baseDAO" />
-
-	<bean id="controller" class="com.movie.ticketing.controller.BaseController">
-		<property name="movieDAO" ref="movieDAO" />
-	</bean>
 
 </beans>

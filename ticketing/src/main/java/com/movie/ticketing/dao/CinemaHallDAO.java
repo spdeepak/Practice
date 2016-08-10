@@ -6,12 +6,12 @@ import org.hibernate.Criteria;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.movie.ticketing.model.CinemaHall;
-import com.movie.ticketing.model.Movie;
 
 public class CinemaHallDAO extends BaseDAO {
 
-    public List<Movie> cinemaHallList() {
-        Criteria criteria = createCriteria(CinemaHall.class, "category");
+    @SuppressWarnings("unchecked")
+    public List<CinemaHall> cinemaHallList() {
+        Criteria criteria = createCriteria(CinemaHall.class, "hall");
         return criteria.list();
     }
 

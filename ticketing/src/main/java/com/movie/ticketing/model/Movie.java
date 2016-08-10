@@ -5,9 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -26,6 +28,8 @@ public class Movie implements Common {
 
     private Integer runtime;
 
+    private List<String> showTimings = new ArrayList<>();
+
     @OneToMany(targetEntity = Cast.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public List<Cast> getCast() {
         return Cast;
@@ -33,7 +37,7 @@ public class Movie implements Common {
 
     @Override
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }
@@ -52,6 +56,11 @@ public class Movie implements Common {
 
     public Integer getRuntime() {
         return runtime;
+    }
+
+    @ElementCollection(targetClass = String.class)
+    public List<String> getShowTimings() {
+        return showTimings;
     }
 
     public void setCast(List<Cast> cast) {
@@ -75,12 +84,11 @@ public class Movie implements Common {
         this.releaseDate = releaseDate;
     }
 
-    /**
-     * In Minutes
-     * 
-     * @param runtime
-     */
     public void setRuntime(Integer runtime) {
         this.runtime = runtime;
+    }
+
+    public void setShowTimings(List<String> showTimings) {
+        this.showTimings = showTimings;
     }
 }

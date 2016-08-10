@@ -1,7 +1,8 @@
 package com.movie.ticketing.dao;
 
+import java.sql.Date;
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,10 +11,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.movie.ticketing.model.Cast;
 import com.movie.ticketing.model.CinemaHall;
+import com.movie.ticketing.model.DateUtils;
 import com.movie.ticketing.model.Movie;
 import com.movie.ticketing.model.Type;
 
@@ -30,14 +31,15 @@ public class TestApp {
     @Resource
     private CinemaHallDAO cinemaHallDAO;
 
+    @SuppressWarnings("serial")
     @Test
-    @Transactional
-    public void test() {
+    //    @Transactional
+    public void test() throws ParseException {
         //Creating a movie
-        Movie movie = new Movie();
-        movie.setMovieName("Movie One");
-        movie.setPlot("Sample Plot");
-        movie.setReleaseDate(new Date(20160101L));
+        Movie movie1 = new Movie();
+        movie1.setMovieName("Movie One");
+        movie1.setPlot("Sample Plot1");
+        movie1.setReleaseDate(new Date(DateUtils.dateToMilliSecondsConverter(20160101L)));
         //Creating cast
         Cast cast1 = new Cast("male", "lead", Type.MALE_LEAD);
         Cast cast2 = new Cast("female", "lead", Type.FEMALE_LEAD);
@@ -47,24 +49,25 @@ public class TestApp {
         cast.add(cast1);
         cast.add(cast2);
         //adding cast to movie
-        movie.setCast(cast);
-        movie.setRuntime(120);
-        movieDAO.saveOrUpdate(movie);
+        movie1.setCast(cast);
+        movie1.setRuntime(120);
+        movieDAO.saveOrUpdate(movie1);
+
+        //Creating a movie
+        Movie movie2 = new Movie();
+        movie2.setMovieName("Movie Two");
+        movie2.setPlot("Sample Plot2");
+        movie2.setReleaseDate(new Date(DateUtils.dateToMilliSecondsConverter(20160101L)));
+        movie2.setRuntime(120);
+        movieDAO.saveOrUpdate(movie2);
 
         CinemaHall ch = new CinemaHall();
-        ch.setMovies(new ArrayList<Movie>() {
-
-            {
-                add(movie);
-            }
-        });
         ch.setName("Odeon");
-        ch.setShowTimings(new ArrayList<String>() {
+        ch.setMovie(new ArrayList<Movie>() {
 
             {
-                add("10:00AM");
-                add("1:00PM");
-                add("4:00PM");
+                add(movie1);
+                add(movie2);
             }
         });
         cinemaHallDAO.saveOrUpdate(ch);

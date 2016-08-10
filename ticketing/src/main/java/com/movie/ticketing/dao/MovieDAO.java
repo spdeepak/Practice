@@ -9,9 +9,10 @@ import com.movie.ticketing.model.Movie;
 
 public class MovieDAO extends BaseDAO {
 
+    @SuppressWarnings("unchecked")
     public List<Movie> movieList() {
-        Criteria criteria = createCriteria(Movie.class, "category");
-        return criteria.list();
+        Criteria crit = createCriteria(Movie.class, "movie");
+        return crit.list();
     }
 
     @Transactional
