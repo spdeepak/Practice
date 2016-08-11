@@ -30,7 +30,7 @@ public class Movie implements Common {
 
     private List<String> showTimings = new ArrayList<>();
 
-    @OneToMany(targetEntity = Cast.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Cast.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Cast> getCast() {
         return Cast;
     }

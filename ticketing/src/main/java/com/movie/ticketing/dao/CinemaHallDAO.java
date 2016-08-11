@@ -17,6 +17,6 @@ public class CinemaHallDAO extends BaseDAO {
 
     @Transactional
     public void saveOrUpdate(CinemaHall cinemaHall) {
-        currentSession().saveOrUpdate(cinemaHall);
+        currentSession().save(cinemaHall);
     }
 }

@@ -25,29 +25,10 @@
 	<div class="mianbody">
 		<p:dataTable id="movie_table" styleClass="movie_table"
 			value="#{controller.movieList()}" var="p">
-			<p:row>
+			<p:column>
 				<h:outputText value="#{p.movieName}" />
-			</p:row>
+			</p:column>
 		</p:dataTable>
-
-		<p:dataGrid var="movie" value="#{controller.movieList()}" columns="3"
-			layout="grid" rows="5" paginator="true" id="home_movie"
-			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="5,10,15">
-			<f:facet name="header">Movie List</f:facet>
-			<p:panel header="#{movie.movieName}" style="text-align:center">
-				<h:panelGrid columns="1" style="width:100%">
-					Release Date : 
-					<h:outputText value="#{movie.releaseDate}">
-						<f:convertDateTime pattern="dd MMMM yyyy" />
-					</h:outputText>
-					<p:commandLink action="movieInfo" title="View Info">
-						<h:outputText value="info" />
-					</p:commandLink>
-				</h:panelGrid>
-			</p:panel>
-
-		</p:dataGrid>
 	</div>
 
 

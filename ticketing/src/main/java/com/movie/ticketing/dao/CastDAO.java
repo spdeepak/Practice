@@ -17,6 +17,6 @@ public class CastDAO extends BaseDAO {
 
     @Transactional
     public void saveOrUpdate(Cast cast) {
-        currentSession().saveOrUpdate(cast);
+        currentSession().save(cast);
     }
 }

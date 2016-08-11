@@ -1,8 +1,8 @@
 package com.movie.ticketing.dao;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.movie.ticketing.model.Cast;
 import com.movie.ticketing.model.CinemaHall;
@@ -33,7 +34,7 @@ public class TestApp {
 
     @SuppressWarnings("serial")
     @Test
-    //    @Transactional
+    @Transactional
     public void test() throws ParseException {
         //Creating a movie
         Movie movie1 = new Movie();
