@@ -16,17 +16,19 @@
 <h:body styleClass="body">
 
 	<div class="menu">
-		<h:link outcome="movieInfo" styleClass="main_menu" value="Movies"
-			title="Movies" />
 		<h:link outcome="index" styleClass="main_menu" value="Home"
 			title="Home" />
 	</div>
-
 	<div class="mianbody">
-		<p:dataTable id="movie_table" styleClass="movie_table"
-			value="#{controller.movieList()}" var="p">
+		<p:dataTable id="movieInfo_table" styleClass="movieInfo_table"
+			value="#{controller.movieById(param['id'])}" var="p">
 			<p:column>
-				<h:outputText value="#{p.movieName}" />
+				<h:outputText value="#{p.movieName}" /><br/>
+				Release Date: <h:outputText value="#{p.releaseDate}">
+					<f:convertDateTime pattern="dd MMMM yyyy" />
+				</h:outputText><br/>
+				Runtime: <h:outputText value="#{p.runtime}" /> minutes<br/>
+				Plot: <h:outputText value="#{p.plot}" /><br/>
 			</p:column>
 		</p:dataTable>
 	</div>

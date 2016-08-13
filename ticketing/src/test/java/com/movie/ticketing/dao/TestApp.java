@@ -73,4 +73,10 @@ public class TestApp {
         });
         cinemaHallDAO.saveOrUpdate(ch);
     }
+
+    @Test
+    public void test1() {
+        movieDAO.movieList();
+        System.out.println(movieDAO.movieList().get(0).getCast().size());
+    }
 }

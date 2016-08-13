@@ -2,6 +2,7 @@ package com.movie.ticketing.controller;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import com.movie.ticketing.model.Movie;
 
 @Controller("controller")
 @SessionScoped
+@ManagedBean(name = "controller")
 public class BaseController {
 
     @Autowired
@@ -26,15 +28,15 @@ public class BaseController {
         return cinemaHallDAO.cinemaHallList();
     }
 
+    public Movie movieById(long id) {
+        return movieDAO.movieById(id);
+    }
+
+    public String movieInfo() {
+        return "movieInfo";
+    }
+
     public List<Movie> movieList() {
         return movieDAO.movieList();
-    }
-
-    public void setCinemaHallDAO(CinemaHallDAO cinemaHallDAO) {
-        this.cinemaHallDAO = cinemaHallDAO;
-    }
-
-    public void setMovieDAO(MovieDAO movieDAO) {
-        this.movieDAO = movieDAO;
     }
 }
