@@ -1,17 +1,22 @@
 package com.deepaksp.springboot.model;
 
-import java.math.BigInteger;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Greeting {
 
-    private BigInteger id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
     private String text;
 
     public Greeting() {
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
@@ -19,7 +24,7 @@ public class Greeting {
         return text;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
