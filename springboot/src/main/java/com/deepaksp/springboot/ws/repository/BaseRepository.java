@@ -5,19 +5,21 @@ import java.util.Collection;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.deepaksp.springboot.model.Greeting;
+
 /**
  * @author Deepak
  *
  */
 @Repository
 @Transactional
-public interface BaseRepository<T> {
+public interface BaseRepository {
 
-    T save(T t);
+    Greeting save(Greeting greeting);
 
-    Collection<T> findAll();
+    Collection<Greeting> findAll();
 
-    T findOne(Long id);
+    Greeting findOne(Long id);
 
     void delete(Long id);
 

@@ -13,7 +13,7 @@ import com.deepaksp.springboot.model.Greeting;
  *
  */
 @Repository
-public class GreetingRepositoryDAO extends BaseDAO implements BaseRepository<Greeting> {
+public class GreetingRepositoryDAO extends BaseDAO implements BaseRepository {
 
     @Override
     public Greeting save(Greeting greeting) {
