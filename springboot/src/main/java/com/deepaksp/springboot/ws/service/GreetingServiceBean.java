@@ -6,23 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.deepaksp.springboot.model.Greeting;
-import com.deepaksp.springboot.ws.repository.GreetingRepository;
+import com.deepaksp.springboot.ws.repository.BaseRepository;
 
 @Service
 public class GreetingServiceBean implements GreetingService {
 
     @Autowired
-    private GreetingRepository greetingRepository;
+    private BaseRepository greetingRepository;
 
     @Override
     public Greeting create(Greeting greeting) {
-        Greeting greet = greetingRepository.save(greeting);
+        Greeting greet = (Greeting) greetingRepository.save(greeting);
         return greet;
     }
 
     @Override
     public void delete(Long id) {
-        greetingRepository.remove(id);
+        greetingRepository.delete(id);
     }
 
     @Override
@@ -33,13 +33,13 @@ public class GreetingServiceBean implements GreetingService {
 
     @Override
     public Greeting findOne(Long id) {
-        Greeting greeting = greetingRepository.findOne(id);
+        Greeting greeting = (Greeting) greetingRepository.findOne(id);
         return greeting;
     }
 
     @Override
     public Greeting update(Greeting greeting) {
-        Greeting updatedGreet = greetingRepository.save(greeting);
+        Greeting updatedGreet = (Greeting) greetingRepository.save(greeting);
         return updatedGreet;
     }
 }

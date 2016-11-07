@@ -13,11 +13,11 @@ import com.deepaksp.springboot.model.Greeting;
  *
  */
 @Repository
-public class GreetingRepositoryImpl extends BaseDAO implements GreetingRepository {
+public class GreetingRepositoryDAO extends BaseDAO implements BaseRepository<Greeting> {
 
     @Override
     public Greeting save(Greeting greeting) {
-        currentSession().save(greeting);
+        currentSession().saveOrUpdate(greeting);
         return null;
     }
 
@@ -35,7 +35,7 @@ public class GreetingRepositoryImpl extends BaseDAO implements GreetingRepositor
     }
 
     @Override
-    public void remove(Long id) {
+    public void delete(Long id) {
         Greeting greeting = findOne(id);
         currentSession().delete(greeting);
     }
