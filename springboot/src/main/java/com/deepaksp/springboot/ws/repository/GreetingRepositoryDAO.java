@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.deepaksp.springboot.model.Greeting;
 
@@ -13,6 +14,7 @@ import com.deepaksp.springboot.model.Greeting;
  *
  */
 @Repository
+@Transactional
 public class GreetingRepositoryDAO extends BaseDAO implements BaseRepository {
 
     @Override

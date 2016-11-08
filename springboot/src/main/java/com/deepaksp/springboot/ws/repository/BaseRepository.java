@@ -2,7 +2,6 @@ package com.deepaksp.springboot.ws.repository;
 
 import java.util.Collection;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.deepaksp.springboot.model.Greeting;
@@ -11,7 +10,7 @@ import com.deepaksp.springboot.model.Greeting;
  * @author Deepak
  *
  */
-@Repository
+//@Repository
 @Transactional
 public interface BaseRepository {
 

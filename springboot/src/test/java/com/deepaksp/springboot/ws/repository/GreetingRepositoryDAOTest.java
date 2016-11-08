@@ -4,8 +4,9 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.deepaksp.springboot.model.Greeting;
 
@@ -13,8 +14,9 @@ import com.deepaksp.springboot.model.Greeting;
  * @author Deepak
  *
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @ContextConfiguration(locations = { "classpath:applicationContext.xml" })
+@SpringBootTest
 public class GreetingRepositoryDAOTest {
 
     @Resource
@@ -22,7 +24,7 @@ public class GreetingRepositoryDAOTest {
 
     @Test
     public void test() {
-        System.out.println(((Greeting) greetingRepositoryImpl.findOne(1L)).getText());
+        System.out.println(greetingRepositoryImpl.findOne(1L).getText());
         Greeting gr = new Greeting();
         gr.setText("Third Text");
         greetingRepositoryImpl.save(gr);
