@@ -20,7 +20,7 @@ public class GreetingRepositoryDAO extends BaseDAO implements BaseRepository {
     @Override
     public Greeting save(Greeting greeting) {
         currentSession().saveOrUpdate(greeting);
-        return null;
+        return greeting;
     }
 
     @Override

@@ -56,7 +56,8 @@ public class GreetingController {
     }
 
     @RequestMapping(value = "/api/greeting/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Greeting> updateGreeting(@RequestBody Greeting greeting) {
+    public ResponseEntity<Greeting> updateGreeting(@PathVariable("id") Long id, @RequestBody Greeting greeting) {
+        greeting.setId(greetingService.findOne(id).getId());
         Greeting updatedGreet = greetingService.update(greeting);
         if (updatedGreet == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -15,4 +15,6 @@ public interface GreetingService {
     Greeting findOne(Long id);
 
     Greeting update(Greeting greeting);
+
+    void evictCache();
 }
