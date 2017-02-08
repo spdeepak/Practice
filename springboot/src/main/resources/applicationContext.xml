@@ -6,10 +6,5 @@
 						http://www.springframework.org/schema/context
 						http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<import resource="hibernateContext.xml" />
-
-	<context:component-scan base-package="com.deepaksp.springboot" />
-
-	<context:property-placeholder location="classpath:application.properties" />
 
 </beans>
